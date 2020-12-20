@@ -1,5 +1,8 @@
 {
   "name": "wallet-ui",
-  "integrations": {},
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
   "type": "angular"
 }
