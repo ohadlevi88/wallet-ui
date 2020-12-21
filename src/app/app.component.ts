@@ -12,12 +12,12 @@ import { StoreService } from './services/store.service';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public selectedIndex = 0;
+  public selectedIndex = 1;
   public appPages = [
     {
       title: 'Transactions',
       url: 'transactions',
-      icon: 'archive'
+      icon: 'archive',
     },
     {
       title: 'Wallets',
