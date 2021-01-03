@@ -3,11 +3,11 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>{{user.userName}}</ion-list-header>
-          <ion-note>{{user.userMail}}</ion-note>
+          <ion-list-header>{{wallet?.firstName}} {{wallet?.lastName}}</ion-list-header>
+          <ion-note>{{wallet?.mail}}</ion-note>
 
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+            <ion-item (click)="selectedIndex = p.selectedIndex" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex === p.selectedIndex">
               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>

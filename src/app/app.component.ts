@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { DigitalWalletService } from './api-config';
 import { StoreService } from './services/store.service';
+import { Wallet } from './model/wallets';
 
 @Component({
   selector: 'app-root',
@@ -12,24 +12,29 @@ import { StoreService } from './services/store.service';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public selectedIndex = 1;
+  public selectedIndex = 2;
   public appPages = [
+    {
+      title: 'Login',
+      url: 'login',
+      icon: 'person',
+      selectedIndex: 0,
+    },
     {
       title: 'Transactions',
       url: 'transactions',
       icon: 'archive',
+      selectedIndex: 1
     },
     {
       title: 'Wallets',
       url: 'wallets',
-      icon: 'paper-plane'
+      icon: 'paper-plane',
+      selectedIndex: 2
     },
   ];
 
-  public user = {
-    userName: "Ohad Levi",
-    userMail: "ohad@levi.com"
-  }
+  wallet: Wallet;
   balance: number;
 
   constructor(
@@ -49,7 +54,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.loadBalance(this.user.userMail);
+    this.store.getWallet().subscribe((wallet: Wallet) => {
+      this.wallet = wallet;
+    });
+    //this.store.loadBalance(this.user.userMail);
     // const path = window.location.pathname.split('folder/')[1];
     // if (path !== undefined) {
     //   this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
