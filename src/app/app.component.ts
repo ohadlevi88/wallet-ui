@@ -57,10 +57,5 @@ export class AppComponent implements OnInit {
     this.store.getWallet().subscribe((wallet: Wallet) => {
       this.wallet = wallet;
     });
-    //this.store.loadBalance(this.user.userMail);
-    // const path = window.location.pathname.split('folder/')[1];
-    // if (path !== undefined) {
-    //   this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
-    // }
   }
 }

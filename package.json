@@ -8,6 +8,7 @@
     "start": "ng serve",
     "start:web": "ionic serve",
     "start:android": "ionic capacitor run android --livereload --external",
+    "start:apk": "ionic build && npx cap sync android && npx cap open android",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

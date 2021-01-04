@@ -24,7 +24,7 @@ export const WALLETS: Wallet[] = [
 
 
 export class Wallets {
-    static getWalletsId(name: string): Wallet {
+    static getWalletId(name: string): Wallet {
         let wallet: Wallet;
         wallet = WALLETS.find(w => w.firstName === name);
         wallet.date = Date.now().toString();

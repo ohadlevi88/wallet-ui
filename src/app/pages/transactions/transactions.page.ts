@@ -8,17 +8,17 @@ import { StoreService } from 'src/app/services/store.service';
   styleUrls: ['./transactions.page.scss'],
 })
 export class TransactionsPage implements OnInit {
-  balance: number;
+  walletDetails;
   transactions: Array<any>;
 
   constructor(private store: StoreService, private router: Router) { }
 
   ngOnInit() {
-    this.store.getBalance().subscribe(balance => {
-      if (!balance) {
+    this.store.getWalletDetails().subscribe(walletDetails => {
+      if (!walletDetails) {
         return;
       }
-      this.balance = balance;
+      this.walletDetails = walletDetails;
     });
     this.store.getTransactions().subscribe(transactions => {
       if(!transactions){

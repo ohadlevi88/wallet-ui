@@ -15,7 +15,7 @@ export class WalletsPage implements OnInit {
   ngOnInit() {
     this.store.getWallet().subscribe((wallet: Wallet) => {
       this.wallet = wallet;
-      this.store.loadBalance(this.wallet.id);
+      this.store.loadWalletDetails(this.wallet.id);
       this.store.loadTransactions(this.wallet.id);
     });
   }

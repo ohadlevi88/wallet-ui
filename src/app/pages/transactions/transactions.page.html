@@ -9,26 +9,28 @@
 <ion-card class="balance_card">
   <ion-card-header>
     <ion-card-subtitle class="balance_caption">Balance</ion-card-subtitle>
-    <ion-card-title class="balance_caption">${{balance}}</ion-card-title>
+    <ion-card-title class="balance_caption">{{walletDetails.balance | currency:walletDetails.currency}}</ion-card-title>
   </ion-card-header>
 </ion-card>
 
 <ion-card>
   <ion-item>
     <ion-button expand="block" color="primary" size="large" (click)="pay()">Pay</ion-button>
-  </ion-item> 
+  </ion-item>
+  <ion-list-header translucent>
+    Recent Transactions
+  </ion-list-header>
   <ion-list>
-    <ion-list-header translucent>
-      Recent Transactions
-    </ion-list-header>
-
     <ion-item *ngFor="let transaction of transactions">
       <ion-avatar slot="start">
-        <img *ngIf="transaction.amount >= 0" src="https://library.kissclipart.com/20191004/ow/kissclipart-cash-money-currency-dollar-saving-f95eef4dfcc3c2cb.png">
-        <img *ngIf="transaction.amount < 0" src="https://img.favpng.com/12/25/15/money-cash-currency-banknote-dollar-png-favpng-xax66VyVZZfQYjvKiZRzYS1qM.jpg">
+        <img *ngIf="transaction.amount >= 0"
+          src="https://library.kissclipart.com/20191004/ow/kissclipart-cash-money-currency-dollar-saving-f95eef4dfcc3c2cb.png">
+        <img *ngIf="transaction.amount < 0"
+          src="https://img.favpng.com/12/25/15/money-cash-currency-banknote-dollar-png-favpng-xax66VyVZZfQYjvKiZRzYS1qM.jpg">
       </ion-avatar>
       <ion-label>
-        <h2 class="receive" [ngClass]="{'receive': transaction.amount >= 0, 'debt':transaction.amount < 0}">{{transaction.amount | currency:transaction.currency}}</h2>
+        <h2 class="receive" [ngClass]="{'receive': transaction.amount >= 0, 'debt':transaction.amount < 0}">
+          {{transaction.amount | currency:transaction.currency}}</h2>
         <h3>{{transaction.created_at | date:'short'}}</h3>
         <h3>{{transaction.status}}</h3>
         <p>{{transaction.reason}}</p>

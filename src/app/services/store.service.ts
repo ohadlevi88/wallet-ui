@@ -21,7 +21,7 @@ export class StoreService {
 
   constructor(private httpClient: HttpClient) { }
 
-  setBalance(balance: number) {
+  setWalletDetails(balance: number) {
     this.balance.next(balance);
   }
   setWallet(wallet: Wallet) {
@@ -35,7 +35,7 @@ export class StoreService {
     return this.transactions$;
   }
 
-  getBalance() {
+  getWalletDetails() {
     return this.balance$;
   }
 
@@ -44,14 +44,14 @@ export class StoreService {
   }
 
   loadWallet(name: string) {
-    this.setWallet(Wallets.getWalletsId(name));
+    this.setWallet(Wallets.getWalletId(name));
   }
 
-  loadBalance(wallwtId: string) {
-    this.httpClient.get(this.basePath + wallwtId).subscribe(
+  loadWalletDetails(wallewtId: string) {
+    this.httpClient.get(this.basePath + wallewtId).subscribe(
       (walletDetails: any) => {
         console.log(walletDetails);
-        this.setBalance(walletDetails.data.accounts[0].balance);
+        this.setWalletDetails(walletDetails.data.accounts[0]);
       },
       err => {
         console.log(err);
@@ -68,6 +68,15 @@ export class StoreService {
         console.log(err);
       }
     );
+  }
+  pay(to) {
+    let transfer = {
+      source_ewallet: this.wallet.getValue().id,
+      currency: "EUR",
+      destination_ewallet: to.id,
+      amount: to.amount
+    }
+    return this.httpClient.post(this.basePath + "transfer", transfer);
   }
 
 }
