@@ -16,6 +16,7 @@
     </ion-card-header>
     <ion-card-content>
       {{wallet.id}}
+      <h1 [ngClass]="{'plus': walletDetails?.balance >= 0, 'minus':walletDetails?.balance < 0}">{{walletDetails?.balance | currency:walletDetails?.currency}}</h1>
     </ion-card-content>
   </ion-card>
 </ion-content>

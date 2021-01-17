@@ -9,7 +9,7 @@
 <ion-card class="balance_card">
   <ion-card-header>
     <ion-card-subtitle class="balance_caption">Balance</ion-card-subtitle>
-    <ion-card-title class="balance_caption">{{walletDetails.balance | currency:walletDetails.currency}}</ion-card-title>
+    <ion-card-title class="balance_caption">{{walletDetails?.balance | currency:walletDetails?.currency}}</ion-card-title>
   </ion-card-header>
 </ion-card>
 
@@ -31,7 +31,7 @@
       <ion-label>
         <h2 class="receive" [ngClass]="{'receive': transaction.amount >= 0, 'debt':transaction.amount < 0}">
           {{transaction.amount | currency:transaction.currency}}</h2>
-        <h3>{{transaction.created_at | date:'short'}}</h3>
+        <h3>{{transaction.created_at * 1000 | date:'dd/MM/yyyy'}}</h3>
         <h3>{{transaction.status}}</h3>
         <p>{{transaction.reason}}</p>
       </ion-label>

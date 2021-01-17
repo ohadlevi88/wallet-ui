@@ -13,9 +13,15 @@
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
           <div padding>
-            <ion-item>
-              <ion-input name="name" type="text" placeholder="Pay To (Name)" ngModel required></ion-input>
-            </ion-item>
+            <ion-list>
+              <ion-item>
+                <ion-label>Pay To</ion-label>
+                <ion-select interface="popover" name="id" ngModel required>
+                  <ion-select-option *ngFor="let wallet of listOfWallets" value={{wallet.id}}>{{wallet.firstName}}
+                    {{wallet.lastName}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
             <ion-item>
               <ion-input name="amount" type="number" placeholder="Amount" ngModel required></ion-input>
             </ion-item>
@@ -26,5 +32,13 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+    <div class="add_member_container" (click)="addMember()">
+      <ion-row class="add_member">
+        <ion-icon class="add_member_icon" name="add-circle"></ion-icon>
+      </ion-row>
+      <ion-row class="add_member">
+        <h6>Add member</h6>
+      </ion-row>
+    </div>
   </form>
 </ion-content>

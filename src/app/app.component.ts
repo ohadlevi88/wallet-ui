@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
       url: 'wallets',
       icon: 'paper-plane',
       selectedIndex: 2
-    },
+    }
   ];
 
   wallet: Wallet;
@@ -55,6 +55,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.store.getWallet().subscribe((wallet: Wallet) => {
+      if (!wallet) {
+        return;
+      }
       this.wallet = wallet;
     });
   }

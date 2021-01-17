@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Wallets } from 'src/app/model/wallets';
+import { from } from 'rxjs';
+import { Wallet, Wallets } from 'src/app/model/wallets';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -9,21 +10,27 @@ import { StoreService } from 'src/app/services/store.service';
   styleUrls: ['./pay.page.scss'],
 })
 export class PayPage implements OnInit {
+  listOfWallets: Wallet[];
+  walletId: string;
 
-  constructor(private store: StoreService,  private router: Router) { }
+  constructor(private store: StoreService, private router: Router) { }
 
   ngOnInit() {
+    this.walletId = this.store.wallet.getValue().id;
+    this.listOfWallets = Wallets.getAllWallets(this.walletId);
   }
-  pay(form){
+  pay(form) {
     let transfer = {
-      id: Wallets.getWalletId(form.value.name).id,
+      id: form.value.id,
       amount: form.value.amount
     }
     this.store.pay(transfer).subscribe(data => {
-      let walletId = this.store.wallet.getValue().id;
-      this.store.loadTransactions(walletId);
-      this.store.loadWalletDetails(walletId);
+      this.store.loadTransactions(this.walletId);
+      this.store.loadWalletDetails(this.walletId);
       this.router.navigateByUrl('transactions');
     });
+  }
+  addMember(){
+    this.router.navigateByUrl('invite');
   }
 }
