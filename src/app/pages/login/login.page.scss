@@ -4,3 +4,48 @@ ion-item{
 ion-button{
     --background: #041127;
 }
+.divider {
+    display: flex;
+
+    &:before,
+    &:after {
+      content: "";
+      flex: 1;
+    }
+}
+
+.line {
+    align-items: center;
+    margin: 1em -1em;
+    color: #cccccc;
+
+    &:before,
+    &:after {
+      height: 1px;
+      margin: 0 1em;
+    }
+} 
+
+.one-line {
+    &:before,
+    &:after {
+       background: #cccccc;
+    }
+}
+
+.auth-form ion-grid,
+.auth-form ion-row {
+    height: 100%;
+    justify-content: center;
+}
+
+.already {
+    display: block;
+    text-align: center;
+    padding-bottom: 10px;
+}
+.forgot_password{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}

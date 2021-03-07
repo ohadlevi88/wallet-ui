@@ -7,17 +7,30 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form #form="ngForm" (ngSubmit)="login(form)">
-    <ion-item lines="full">
-      <ion-label position="floating">Name</ion-label>
-      <ion-input name="name" ngModel type="text" required></ion-input>
-    </ion-item>
-
+<ion-content class="auth-form" scroll="false">
+  <ion-grid>
+    <form #form="ngForm" (ngSubmit)="login(form)">
+      <ion-item lines="full">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input name="name" ngModel type="text" required></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" required></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="danger" expand="block">Sign In</ion-button>
+          <a [routerLink]="['/forgot-password']" class="small-text forgot_password">Forgot Password?</a>
+        </ion-col>
+      </ion-row>
+    </form>
     <ion-row>
-      <ion-col>
-        <ion-button type="submit" color="danger" expand="block">Sign In</ion-button>
+      <ion-col align-self-center>
+        <span class="divider line one-line">or</span>
+        <span class="already">No have an account?</span>
+        <ion-button [routerLink]="['/registration']" expand="block" color="primary">Register</ion-button>
       </ion-col>
     </ion-row>
-  </form>
+  </ion-grid>
 </ion-content>

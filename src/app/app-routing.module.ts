@@ -22,14 +22,23 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
-  },  {
+  },
+  {
     path: 'pay',
     loadChildren: () => import('./pages/pay/pay.module').then( m => m.PayPageModule)
   },
   {
     path: 'invite',
     loadChildren: () => import('./pages/invite/invite.module').then( m => m.InvitePageModule)
+  },
+  {
+    path: 'registration',
+    loadChildren: () => import('./pages/registration/registration.module').then( m => m.RegistrationPageModule)
+  },  {
+    path: 'forgot-password',
+    loadChildren: () => import('./pages/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   }
+
 
 
 ];
