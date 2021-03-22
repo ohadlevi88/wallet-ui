@@ -35,4 +35,13 @@
       </ion-col>
     </ion-row>
   </form>
+  <ion-card>
+    <img *ngIf="!fileUrl" src="assets/no-image.jpeg"/>
+    <img *ngIf="fileUrl" src="{{fileUrl}}"/>
+    <ion-card-content>
+      <ion-button color="medium" size="large" (click)="cropUpload()">
+        <ion-icon slot="icon-only" name="camera"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
