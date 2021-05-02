@@ -21,7 +21,6 @@
     }
   },
   "server": {
-    "cleartext": "true",
-    "url": "http://10.173.4.147:8101"
+    "cleartext": "true"
   }
 }
