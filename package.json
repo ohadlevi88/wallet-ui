@@ -7,6 +7,7 @@
     "ng": "ng",
     "start": "ng serve",
     "start:web": "ionic serve",
+    "start:browser": "ionic cordova run browser",
     "start:android": "ionic capacitor run android --livereload --external",
     "start:apk": "ionic build && npx cap sync android && npx cap open android",
     "build": "ng build",
@@ -35,6 +36,7 @@
     "@ionic/angular": "^5.0.0",
     "cordova-android": "9.0.0",
     "cordova-res": "^0.15.2",
+    "jetifier": "^1.6.6",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
@@ -52,6 +54,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
+    "cordova-browser": "^6.0.0",
     "cordova-plugin-camera": "^5.0.1",
     "cordova-plugin-crop": "^0.4.0",
     "cordova-plugin-device": "^2.0.2",
@@ -95,7 +98,8 @@
       "cordova-plugin-image-picker": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "browser"
     ]
   }
 }
