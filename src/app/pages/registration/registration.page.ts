@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import { OnboardingService } from 'src/app/services/onboarding.service';
 
 @Component({
   selector: 'app-registration',
@@ -11,12 +12,12 @@ export class RegistrationPage implements OnInit {
   fileUrl: any = null;
   respData: any;
 
-  constructor(private transfer: FileTransfer) { }
+  constructor(private onboardingService: OnboardingService) { }
 
   ngOnInit() {
   }
-  cropUpload() {
-
+  scan() {
+    this.onboardingService.scan();
   }
 
 }
