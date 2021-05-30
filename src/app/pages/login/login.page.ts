@@ -14,7 +14,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
   login(form){
-    this.store.loadWallet(form.value.name);
+    this.store.loadWallet(form.value.id);
     this.router.navigateByUrl('wallets');
   }
 }

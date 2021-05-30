@@ -9,28 +9,33 @@
 
 <ion-content>
   <ion-card>
-    <ion-button (click)="scan()" expand="block" color="primary">Scan Your ID</ion-button>
+    <ion-button (click)="scan()" expand="block" color="primary">Scan your driver's license</ion-button>
   </ion-card>
-  <form>
+  <form [formGroup]="registrationForm">
+    <ion-item lines="full">
+      <ion-label position="floating">Personal Id Number</ion-label>
+      <ion-input type="text" formControlName="personalIdNumber"></ion-input>
+    </ion-item>
+
     <ion-item lines="full">
       <ion-label position="floating">First name</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input type="text" formControlName="firstName"></ion-input>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">Last name</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input type="text" formControlName="lastName"></ion-input>
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-label position="floating">Date Of Birth</ion-label>
+      <ion-input type="text" formControlName="dateOfBirth"></ion-input>
     </ion-item>
 
-    <ion-item lines="full">
+    <!-- <ion-item lines="full">
       <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" required></ion-input>
-    </ion-item>
+      <ion-input type="password"></ion-input>
+    </ion-item> -->
 
     <ion-row>
       <ion-col>

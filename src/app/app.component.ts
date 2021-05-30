@@ -6,8 +6,6 @@ import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {StoreService} from './services/store.service';
 import {Wallet} from './model/wallets';
 
-import * as BlinkID from '@microblink/blinkid-capacitor';
-
 @Component({
     selector: 'app-root',
     templateUrl: 'app.component.html',

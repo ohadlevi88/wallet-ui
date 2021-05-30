@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import * as BlinkID from '@microblink/blinkid-capacitor';
-import {AlertController} from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 
 @Injectable({
     providedIn: 'root'
@@ -43,27 +43,22 @@ export class OnboardingService {
 
         for (const result of scanningResults) {
             if (result instanceof BlinkID.BlinkIdCombinedRecognizerResult) {
-                this.Results = this.getIdResultsString(result);
+                //this.Results = this.getIdResultsString(result);
                 this.DocumentFront = result.fullDocumentFrontImage ? `data:image/jpg;base64,${result.fullDocumentFrontImage}` : undefined;
                 this.DocumentBack = result.fullDocumentBackImage ? `data:image/jpg;base64,${result.fullDocumentBackImage}` : undefined;
                 this.DocumentFace = result.faceImage ? `data:image/jpg;base64,${result.faceImage}` : undefined;
-            } else if (result instanceof BlinkID.MrtdCombinedRecognizerResult) {
-                this.Results = this.getMrzResultsString(result);
-                this.DocumentFront = result.fullDocumentFrontImage ? `data:image/jpg;base64,${result.fullDocumentFrontImage}` : undefined;
-                this.DocumentBack = result.fullDocumentBackImage ? `data:image/jpg;base64,${result.fullDocumentBackImage}` : undefined;
-                this.DocumentFace = result.faceImage ? `data:image/jpg;base64,${result.faceImage}` : undefined;
+                return result;
             }
+            // const alert = await this.alertController.create({
+            //     cssClass: 'my-custom-class',
+            //     header: 'Wallet-UI',
+            //     subHeader: 'For your information:',
+            //     message: `${this.Results}`,
+            //     buttons: ['OK']
+            // });
+
+            // await alert.present();
         }
-
-        const alert = await this.alertController.create({
-            cssClass: 'my-custom-class',
-            header: 'Alert',
-            subHeader: 'Subtitle',
-            message: `${this.Results}`,
-            buttons: ['Cancel', 'Open Modal', 'Delete']
-        });
-
-        await alert.present();
     }
 
     getIdResultsString(result: BlinkID.BlinkIdCombinedRecognizerResult) {
